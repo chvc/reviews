@@ -3,6 +3,8 @@ package bit;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.IntUnaryOperator;
+import java.util.stream.IntStream;
 
 /**
  * 〈一句话功能简述〉
@@ -12,6 +14,7 @@ import java.util.Comparator;
  */
 public class Lc1358 {
     public int[] sortByBits(int[] arr) {
+
         arr = Arrays.stream(arr).boxed().sorted((o1, o2) -> {
             int x = Integer.bitCount(o1);
             int y = Integer.bitCount(o2);

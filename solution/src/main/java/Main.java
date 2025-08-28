@@ -66,9 +66,10 @@ public class Main {
 //                5, 14, null, 1
 //        }))));
 
-        Scanner scanner = new Scanner(System.in);
-        String i = scanner.nextLine();
-        System.out.println(i);
+//        Scanner scanner = new Scanner(System.in);
+//        String i = scanner.nextLine();
+//        System.out.println(i);
+        System.out.println(String.format("%04d",1));
     }
 
    static class TreeNode {
