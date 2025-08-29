@@ -11,7 +11,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /**
- * 〈一句话功能简述〉
+ * P00241—相同数字组成图形的周长
  *
  * @author chenghu
  * @since 2025-08-29 01:01:11

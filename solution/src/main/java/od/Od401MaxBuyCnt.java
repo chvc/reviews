@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.StreamTokenizer;
 
 /**
- * 最多购买宝石的数量
+ *  P00302—最多购买宝石数目
  *
  * @author chenghu
  * @since 2025-08-29 19:41:20

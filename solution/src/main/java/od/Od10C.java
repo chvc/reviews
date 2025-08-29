@@ -4,7 +4,7 @@ package od;
 import java.util.Scanner;
 
 /**
- * 〈一句话功能简述〉
+ * P00404-最大时间
  *
  * @author chenghu
  * @since 2025-08-10 14:05:21

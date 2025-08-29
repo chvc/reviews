@@ -6,12 +6,13 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * 〈一句话功能简述〉
+ *
  *
  * @author chenghu
  * @since 2025-08-26 03:07:15
  */
 public class Od309 {
+    // todo 需要复习
 
     static int[] nums;
 
