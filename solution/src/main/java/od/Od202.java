@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
  * @since 2025-08-26 21:41:24
  */
 public class Od202 {
+
+    // todo
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
