@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,7 @@ public class Main {
 
 
     static int[] gems;
+
 
 //    public static void main(String[] args) throws IOException {
 //        //
@@ -117,46 +119,102 @@ public class Main {
 //        System.out.println(findMinimumK(x, y, cntX, cntY)); // 输出最小的k值
 //    }
 
-        public static void main(String[] args) {
-            Scanner in = new Scanner(System.in);
-            int[] params = split(in.nextLine(), " ");
-            int M = params[0];
-            int N = params[1];
+    public static void main1(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] params = split(in.nextLine(), " ");
+        int M = params[0];
+        int N = params[1];
 
-            int[] cars = new int[M];
-            for (int i = 0; i < M; i++) {
-                cars[i] = Integer.parseInt(in.nextLine());
-            }
-            double result = 0;
+        int[] cars = new int[M];
+        for (int i = 0; i < M; i++) {
+            cars[i] = Integer.parseInt(in.nextLine());
+        }
+        double result = 0;
 
-            int i=0;
-            while(true){
-                if(i>=M){
-                    System.out.println(String.format("%.1f", result));
-                    break;
+        int i = 0;
+        while (true) {
+            if (i >= M) {
+                System.out.println(String.format("%.1f", result));
+                break;
+            } else {
+                if (i == 0) {
+                    result = Double.valueOf(N) / cars[i];
+                } else if (result <= Double.valueOf(N) / cars[i] + 1) {
+                    result = Double.valueOf(N) / cars[i];
                 } else {
-                    if (i == 0){
-                        result = Double.valueOf(N) / cars[i];
-                    } else if(result <= Double.valueOf(N) / cars[i] + 1) {
-                        result = Double.valueOf(N) / cars[i];
-                    } else {
-                        result = result - 1;
-                    }
+                    result = result - 1;
                 }
-                i+=1;
             }
+            i += 1;
         }
-
-        public static int[] split(String input_str,String chars){
-            String[] tmp2 = input_str.split(chars);
-            int[] counts = new int[tmp2.length];
-            for (int i = 0; i < tmp2.length; i++) {
-                counts[i] = Integer.parseInt(tmp2[i]);
-            }
-            return counts;
-        }
-
     }
+
+    public static int[] split(String input_str, String chars) {
+        String[] tmp2 = input_str.split(chars);
+        int[] counts = new int[tmp2.length];
+        for (int i = 0; i < tmp2.length; i++) {
+            counts[i] = Integer.parseInt(tmp2[i]);
+        }
+        return counts;
+    }
+
+    public static void main(String[] args) {
+        int testTime = 1000;
+        // 生成一个数
+        // 0-10000
+        System.out.println("测试开始");
+        for (int i = 0; i < testTime; i++) {
+            int n = new Random().nextInt(101);
+            int x1 = f1(n);
+            int x2 = f2(n);
+            if (x1 != x2) {
+                System.out.println("结果不正确:" + "n是:" + n + ",x1是:" + x1 + "," + "x2是:" + x2);
+            }
+        }
+        System.out.println("测试结束");
+    }
+
+    public static int f1(int n) {
+        int cnt = 0;
+        for (int i = 0; i <= n; i++) {
+            if (String.valueOf(i).contains("4")) {
+                cnt++;
+            }
+        }
+        return n - cnt;
+    }
+
+    public static int f2(int n) {
+        // 以10进制形式处理
+        int x = 0;
+        int cnt = 0;
+        int z = n;
+        while (n > 0) {
+            int mod = n % 10;
+            if (x == 0) {
+                if (mod >= 4) {
+                    cnt++;
+                }
+            } else {
+                if (mod != 0) {
+                    int i = f3(x) * mod;
+                    cnt = cnt + i;
+                }
+            }
+            n = n / 10;
+            x++;
+        }
+        return z - cnt;
+    }
+
+    public static int f3(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        return (int) (f3(n - 1) * 9 + Math.pow(10, n - 1));
+    }
+
+}
 
 
 
