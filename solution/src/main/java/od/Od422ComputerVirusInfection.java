@@ -47,7 +47,6 @@ public class Od422ComputerVirusInfection {
             });
         }
         int virusOrigin = sc.nextInt();
-        // 找入度为0的节点 加入到队列中去
         //
         // 点 -- 距离
         PriorityQueue<int[]> heap = new PriorityQueue<>(Comparator.comparingInt(o -> o[1]));
