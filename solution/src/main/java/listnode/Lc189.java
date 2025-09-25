@@ -52,24 +52,44 @@ public class Lc189 {
     // 7--> (6+3) / 7 ==>2
 
     public void rotate2(int[] nums, int k) {
-        int l = 0;
-        k = k % nums.length;
-        int r = nums.length - k - 1;
-        while (r < nums.length - 1) {
-            int temp = nums[++r];
-            int templ = nums[l];
-            nums[l++] = temp;
-            nums[r] = templ;
+        // 每一个数 都往右移动k个数字
+        int[] res = new int[nums.length];
+
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            res[(i + k) % n] = nums[i];
         }
-        // [3,2,1,4,5,6 ]
-        // [3,4,1,2,5,6]
-        // [3,4,5,2,1,6]
-        // [3,4,5,6,1,2]
+        for (int i = 0; i < n; i++) {
+            nums[i] = res[i];
+        }
+    }
+
+    public void rotate3(int[] nums, int k) {
+        // 每一个数 都往右移动k个数字
+        int n = nums.length;
+        k = k % n;
+        reverseNums(nums, 0, n - 1);
+        reverseNums(nums, 0, k - 1);
+        reverseNums(nums, k, n - 1);
+    }
+
+    public void reverseNums(int[] nums, int start, int end) {
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+
+    public void swap(int[] nums, int start, int end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
     }
 
     public static void main(String[] args) {
         new Lc189().rotate2(new int[]{
-                1,2,3,4,5,6,7
+                1, 2, 3, 4, 5, 6, 7
         }, 3);
         System.out.println(new Lc189().gcd(4, 6));
         // [5,2,3,4,1,6]
